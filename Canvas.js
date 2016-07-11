@@ -15,6 +15,7 @@ function draw()
 	setInterval(30);
 	snake.update();
 	snake.show();
+	snake.death();
 
 	if (snake.eat(food))
 	{
