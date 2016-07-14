@@ -1,1 +1,13 @@
+html {
+	background-color: #333333;
+}
 
+h1 {
+	color: red;
+}
+
+#canvas {
+  	display: flex;
+  	/* This centers our sketch horizontally. */
+  	justify-content: center;
+}
