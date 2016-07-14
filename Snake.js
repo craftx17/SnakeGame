@@ -26,6 +26,8 @@ function Snake() {
 
 		this.x = constrain(this.x, 0, width - scl);
 		this.y = constrain(this.y, 0, height - scl);
+
+		document.getElementById("header").innerHTML = "Snake Game - Score: " + this.total;
 	}
 
 	this.show = function() {
@@ -64,48 +66,6 @@ function Snake() {
 		var d = dist(this.x, this.y, food.x, food.y);
 		if (d > 0) { return false; }
 		this.total++;
-		return true;
-	}
-}
-		this.y = constrain(this.y, 0, height - scl);
-	}
-
-	this.show = function() {
-		fill(255);
-
-		for (var i = 0; i < this.tail.length; i++)
-		{
-			rect(this.tail[i].x, this.tail[i].y, scl, scl);
-		}
-		rect(this.x, this.y, scl, scl);
-	}
-
-	this.dir = function(x, y) {
-		this.xspeed = x;
-		this.yspeed = y;
-	}
-	
-	this.death = function()
-	{
-		if (this.tail.length > 0)
-		{
-			for (var i = 0; i < this.tail.length; i++)
-			{
-				var d = dist(this.x, this.y, this.tail[i].x, this.tail[i].y);
-				if (d === 0)
-				{
-					this.total = 0;
-					this.tail = [];
-					window.alert("You died!");
-				}
-			}
-		}
-	}
-
-	this.eat = function(food) {
-		var d = dist(this.x, this.y, food.x, food.y);
-		if (d > 0) { return false; }
-		total++;
 		return true;
 	}
 }
