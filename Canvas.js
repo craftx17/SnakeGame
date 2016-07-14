@@ -3,7 +3,8 @@ var food;
 
 function setup()
 {
-	createCanvas(600, 600);
+	var cnv = createCanvas(700, 525);
+	cnv.parent('canvas');
 	snake = new Snake();
 	frameRate(10);
 	pickLocation();
@@ -11,8 +12,8 @@ function setup()
 
 function draw()
 {
-	background(51);
-	setInterval(30);
+	background(0, 0, 0);
+	setInterval(25);
 	snake.update();
 	snake.show();
 	snake.death();
