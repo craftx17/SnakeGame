@@ -1,5 +1,4 @@
 var scl = 20;
-
 var food;
 
 function Snake() {
@@ -12,7 +11,7 @@ function Snake() {
 	this.tail = [];
 	this.direction = "right";
 
-	this.update = function() 
+	this.update = function() //sets class variables for next frame
 	{
 		if (this.total === this.tail.length) 
 		{
@@ -29,10 +28,11 @@ function Snake() {
 		this.x = constrain(this.x, 0, width - scl);
 		this.y = constrain(this.y, 0, height - scl);
 
-		document.getElementById("header").innerHTML = "Snake Game - Score: " + this.total;
+		document.getElementById("highscore").innerHTML = "This Score: " + this.total + "     High Score: " + this.highscore;
 	}
 
-	this.show = function() {
+	this.show = function() //draws snake
+	{
 		fill(46, 184, 46);
 
 		for (var i = 0; i < this.tail.length; i++)
@@ -42,7 +42,8 @@ function Snake() {
 		rect(this.x, this.y, scl, scl);
 	}
 
-	this.dir = function(direction) {
+	this.dir = function(direction) //changes the direction snake moves 
+	{
 		if (direction == "right" && this.direction != "left") {
 			this.xspeed = 1;
 			this.yspeed = 0;
@@ -62,7 +63,7 @@ function Snake() {
 		}
 	}
 	
-	this.death = function()
+	this.death = function() //checks if head touches any part of tail
 	{
 		if (this.tail.length > 0)
 		{
@@ -74,7 +75,7 @@ function Snake() {
 					if (this.total > this.highscore)
 					{
 						this.highscore = this.total;
-						document.getElementById("highscore").innerHTML = "High Score: " + this.highscore;
+						document.getElementById("highscore").innerHTML = "This Score: 0     High Score: " + this.highscore;
 					}
 
 					this.total = 0;
@@ -85,18 +86,21 @@ function Snake() {
 		}
 	}
 
-	this.eat = function(food) {
+	this.eat = function(food) //checks if head touches any food and updates tail
+	{
 		var d = dist(this.x, this.y, food.x, food.y);
 		if (d > 0) { return false; }
 		this.total++;
 		return true;
 	}
 
-	this.tailLength = function() {
+	this.tailLength = function()
+	{
 		return this.tail.length;
 	}
 
-	this.tailIndex = function(index) {
+	this.tailIndex = function(index) 
+	{
 		return this.tail[index];
 	}
 }
