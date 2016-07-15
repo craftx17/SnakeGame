@@ -1,4 +1,4 @@
-var scl = 15;
+var scl = 20;
 
 var food;
 
@@ -9,6 +9,7 @@ function Snake() {
 	this.yspeed = 0;
 	this.total = 0;
 	this.tail = [];
+	this.direction = "right";
 
 	this.update = function() 
 	{
@@ -31,7 +32,7 @@ function Snake() {
 	}
 
 	this.show = function() {
-		fill(255);
+		fill(46, 184, 46);
 
 		for (var i = 0; i < this.tail.length; i++)
 		{
@@ -40,9 +41,24 @@ function Snake() {
 		rect(this.x, this.y, scl, scl);
 	}
 
-	this.dir = function(x, y) {
-		this.xspeed = x;
-		this.yspeed = y;
+	this.dir = function(direction) {
+		if (direction == "right" && this.direction != "left") {
+			this.xspeed = 1;
+			this.yspeed = 0;
+			this.direction = "right";
+		} else if (direction == "down" && this.direction != "up") {
+			this.xspeed = 0;
+			this.yspeed = 1;
+			this.direction = "down";
+		} else if (direction == "left" && this.direction != "right") {
+			this.xspeed = -1;
+			this.yspeed = 0;
+			this.direction = "left";
+		} else if (direction == "up" && this.direction != "down") {
+			this.xspeed = 0;
+			this.yspeed = -1;
+			this.direction = "up";
+		}
 	}
 	
 	this.death = function()
