@@ -27,14 +27,16 @@ function draw()
 	rect(food.x, food.y, 20, 20);
 }
 
-function keyPressed() {
+function keyPressed() //detects arrow keys and updates direction accordingly
+{
 	if (keyCode === UP_ARROW) { snake.dir("up"); }
 	else if (keyCode === LEFT_ARROW) { snake.dir("left"); }
 	else if (keyCode === RIGHT_ARROW) { snake.dir("right"); }
 	else { snake.dir("down"); }
 }
 
-function pickLocation() {
+function pickLocation() //picks location for food
+{
 	var cols = floor(width / 20);
 	var rows = floor(height / 20);
 	food = createVector(floor(random(cols)), floor(random(rows)));
