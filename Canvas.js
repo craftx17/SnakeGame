@@ -24,19 +24,19 @@ function draw()
 	}
 
 	fill(230, 0, 15);
-	rect(food.x, food.y, 15, 15);
+	rect(food.x, food.y, 20, 20);
 }
 
 function keyPressed() {
-	if (keyCode === UP_ARROW) { snake.dir(0, -1); }
-	else if (keyCode === LEFT_ARROW) { snake.dir(-1, 0); }
-	else if (keyCode === RIGHT_ARROW) { snake.dir(1, 0); }
-	else { snake.dir(0, 1); }
+	if (keyCode === UP_ARROW) { snake.dir("up"); }
+	else if (keyCode === LEFT_ARROW) { snake.dir("left"); }
+	else if (keyCode === RIGHT_ARROW) { snake.dir("right"); }
+	else { snake.dir("down"); }
 }
 
 function pickLocation() {
-	var cols = floor(width / 15);
-	var rows = floor(height / 15);
+	var cols = floor(width / 20);
+	var rows = floor(height / 20);
 	food = createVector(floor(random(cols)), floor(random(rows)));
-	food.mult(15);
+	food.mult(20);
 }
