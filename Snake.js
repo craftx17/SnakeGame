@@ -8,6 +8,7 @@ function Snake() {
 	this.xspeed = 1;
 	this.yspeed = 0;
 	this.total = 0;
+	this.highscore = 0;
 	this.tail = [];
 	this.direction = "right";
 
@@ -70,6 +71,12 @@ function Snake() {
 				var d = dist(this.x, this.y, this.tail[i].x, this.tail[i].y);
 				if (d === 0)
 				{
+					if (this.total > this.highscore)
+					{
+						this.highscore = this.total;
+						document.getElementById("highscore").innerHTML = "High Score: " + this.highscore;
+					}
+
 					this.total = 0;
 					this.tail = [];
 					window.alert("You died!");
@@ -83,5 +90,13 @@ function Snake() {
 		if (d > 0) { return false; }
 		this.total++;
 		return true;
+	}
+
+	this.tailLength = function() {
+		return this.tail.length;
+	}
+
+	this.tailIndex = function(index) {
+		return this.tail[index];
 	}
 }
