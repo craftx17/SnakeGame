@@ -3,7 +3,7 @@ var food;
 
 function setup()
 {
-	var cnv = createCanvas(720, 540);
+	var cnv = createCanvas(720, 520);
 	cnv.parent('canvas');
 	snake = new Snake();
 	frameRate(10);
@@ -39,4 +39,12 @@ function pickLocation() {
 	var rows = floor(height / 20);
 	food = createVector(floor(random(cols)), floor(random(rows)));
 	food.mult(20);
+
+	for (var i = 0; i < snake.tailLength(); i++)
+	{
+		if (snake.tailIndex(i).x === food.x && snake.tailIndex(i).y === food.y)
+		{
+			pickLocation();
+		}
+	}
 }
